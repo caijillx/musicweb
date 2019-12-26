@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../static/Semantic-UI-CSS-master/semantic.min.css">
+    <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="../static/Semantic-UI-CSS-master/semantic.min.js"></script>
+    <title>Title</title>
+</head>
+<body>
+<a th:text="${users[0]}">有钱</a>
+<div>
+<table class="ui celled table">
+    <thead>
+    <tr><th>id</th>
+        <th>name</th>
+        <th>xb</th>
+    </tr></thead>
+    <tbody>
+
+    <tr th:each="user : ${users}">
+        <td data-label="Name" th:text="${user.id}">James</td>
+        <td data-label="Age" th:text="${user.name}">24</td>
+        <td data-label="Job" th:text="${user.pwd}">Engineer</td>
+    </tr>
+    </tbody>
+</table>
+</div>
+<table class="ui celled table">
+    <thead>
+    <tr><th>Name</th>
+        <th>年龄</th>
+        <th>Job</th>
+    </tr></thead>
+    <tbody>
+    <tr>
+        <td data-label="Name">James</td>
+        <td data-label="Age">24</td>
+        <td data-label="Job">Engineer</td>
+    </tr>
+    <tr>
+        <td data-label="Name">吉尔</td>
+        <td data-label="Age">26</td>
+        <td data-label="Job">Engineer</td>
+    </tr>
+    <tr>
+        <td data-label="Name">Elyse</td>
+        <td data-label="Age">24</td>
+        <td data-label="Job">Designer</td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
+

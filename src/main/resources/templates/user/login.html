@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/static/Semantic-UI-CSS-master/semantic.min.css">
+    <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="/static/Semantic-UI-CSS-master/semantic.min.js"></script>
+    <title>登录</title>
+</head>
+<body>
+<div style="margin: auto;width: 35%;height: 15%;"></div>
+<div style="margin: auto;width: 35%;height: 50%;">
+    <div class="ui horizontal divider" style="font-size:20px">登录</div>
+    <form class="ui form segment" method="post"  action="#" th:action="@{/user/login}">
+
+        <div class="field">
+            <label>Username</label>
+            <input placeholder="请输入用户名" name="username" type="text">
+        </div>
+        <div class="field">
+            <label>Password</label>
+            <input type="password" placeholder="请输入密码" name="password">
+        </div>
+        <div style="text-align: center;"><button class="ui primary button" style="width: 100%">登录</button></div>
+        <div class="ui error message"></div>
+        <!--        只有有message才显示-->
+        <div class="ui negative message"  th:unless="${#strings.isEmpty(message)}" th:text="${message}">用户名和密码错误</div>
+    </form>
+</div>
+</body>
+</html>
+
+<script>
+    $('.ui.form')
+        .form({
+            fields: {
+                username: {
+                    identifier: 'username',
+                    rules: [
+                        {
+                            type   : 'empty',
+                            prompt : '请输入用户名！'
+                        }
+                    ]
+                },
+                password: {
+                    identifier: 'password',
+                    rules: [
+                        {
+                            type   : 'empty',
+                            prompt : '请输入密码！'
+                        },
+                        {
+                            type   : 'minLength[6]',
+                            prompt : '您的密码至少应该有6个字符！'
+                        }
+                    ]
+                }
+            }
+        })
+    ;
+</script>
