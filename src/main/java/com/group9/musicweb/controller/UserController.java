@@ -60,7 +60,43 @@ public class UserController {
     }
 
     @GetMapping("/register")
-    public String register() {
+    public String registerPage() {
         return "user/register";
     }
+
+    @PostMapping("/register")
+    public String register(@RequestParam String username,
+                           @RequestParam String gender,
+                           @RequestParam String password,
+                           @RequestParam String phone,
+                           @RequestParam String email,
+                           RedirectAttributes attributes) {
+        boolean flag = true;
+        System.out.println("**********************");
+        if (!userService.isFindUserByUsername(username)) {
+            attributes.addFlashAttribute("message", "该用户名已被注册");
+            System.out.println("------------------------- ------------------");
+            flag = false;
+        }
+        if (!userService.isFindUserByPhone(phone)) {
+            attributes.addFlashAttribute("message", "该手机号被已注册");
+            flag = false;
+        }
+        if (!userService.isFindUserByEmail(email)) {
+            attributes.addFlashAttribute("message", "该邮箱已被注册");
+            flag = false;
+        }
+        if(flag){
+            User user = new User();
+            user.setName(username);
+            user.setXb(gender);
+            user.setPwd(password);
+            user.setPhone(phone);
+            user.setEmail(email);
+            userService.addUser(user);
+            return "user/index";
+        }
+        else return "redirect:/user/register";
+    }
+
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../static/Semantic-UI-CSS-master/semantic.min.css">
@@ -11,10 +11,10 @@
 <div style="margin: auto;width: 35%;height: 5%;"></div>
 <div style="margin: auto;width: 35%;height: 50%;">
 <div class="ui horizontal divider" style="font-size:20px">注册</div>
-<form class="ui form segment">
+<form class="ui form segment" method="post"  action="#" th:action="@{/user/register}">
         <div class="field">
-            <label>Name</label>
-            <input placeholder="First Name" name="name" type="text">
+            <label>Username</label>
+            <input placeholder="Username" name="username" type="text">
         </div>
         <div class="field">
             <label>Gender</label>
@@ -25,12 +25,16 @@
             </select>
         </div>
         <div class="field">
-            <label>Username</label>
-            <input placeholder="Username" name="username" type="text">
-        </div>
-        <div class="field">
             <label>Password</label>
             <input type="password" name="password">
+        </div>
+        <div class="field">
+            <label>Phone</label>
+            <input placeholder="Phone" name="phone" type="text">
+        </div>
+        <div class="field">
+            <label>Email</label>
+            <input placeholder="Email" name="email" type="text">
         </div>
     <div class="inline field">
         <div class="ui checkbox">
@@ -40,6 +44,8 @@
     </div>
     <div style="text-align: center;"><button class="ui primary button" style="width: 100%">注册</button></div>
     <div class="ui error message"></div>
+    <!--        只有有message才显示-->
+    <div class="ui negative message"  th:unless="${#strings.isEmpty(message)}" th:text="${message}">用户名和密码错误</div>
 </form>
 </div>
 </body>
@@ -48,21 +54,12 @@
     $('.ui.form')
         .form({
             fields: {
-                name: {
-                    identifier: 'name',
+                username: {
+                    identifier: 'username',
                     rules: [
                         {
                             type   : 'empty',
-                            prompt : 'Please enter your name'
-                        }
-                    ]
-                },
-                skills: {
-                    identifier: 'skills',
-                    rules: [
-                        {
-                            type   : 'minCount[2]',
-                            prompt : 'Please select at least two skills'
+                            prompt : 'Please enter your username'
                         }
                     ]
                 },
@@ -72,15 +69,6 @@
                         {
                             type   : 'empty',
                             prompt : 'Please select a gender'
-                        }
-                    ]
-                },
-                username: {
-                    identifier: 'username',
-                    rules: [
-                        {
-                            type   : 'empty',
-                            prompt : 'Please enter a username'
                         }
                     ]
                 },
@@ -97,12 +85,31 @@
                         }
                     ]
                 },
-                terms: {
-                    identifier: 'terms',
+                phone: {
+                    identifier: 'phone',
                     rules: [
                         {
-                            type   : 'checked',
-                            prompt : 'You must agree to the terms and conditions'
+                            type   : 'empty',
+                            prompt : 'Please enter a phone number'
+                        },
+                        {
+                            type   : 'regExp',
+                            value   : '/^1[3-578]\\d{9}$/',
+                            prompt : '请输入正确的手机格式'
+                        }
+                    ]
+                },
+                email: {
+                    identifier: 'email',
+                    rules: [
+                        {
+                            type   : 'empty',
+                            prompt : 'Please enter a email address'
+                        },
+                        {
+                            type   : 'regExp',
+                            value   : '/^\\w+((-\\w+)|(\\.\\w+))*\\@[A-Za-z0-9]+((\\.|-)[A-Za-z0-9]+)*\\.[A-Za-z0-9]+$/',
+                            prompt : '请输入正确的邮箱格式'
                         }
                     ]
                 }

@@ -7,5 +7,6 @@ public interface UserService {
     boolean isFindUserByUsername(String username);
     boolean isFindUserByEmail(String email);
     boolean isFindUserByPhone(String phone);
+    void addUser(User user);
 
 }

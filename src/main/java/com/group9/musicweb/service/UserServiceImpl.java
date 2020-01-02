@@ -10,7 +10,6 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepository;
 
-
     @Override
     public User checkUser(String username, String password) {
         User user = userRepository.findByNameAndPwd(username,password);
@@ -33,5 +32,10 @@ public class UserServiceImpl implements UserService {
     public boolean isFindUserByPhone(String phone) {
         User user = userRepository.findByPhone(phone);
         return user == null;
+    }
+
+    @Override
+    public void addUser(User user){
+        userRepository.save(user);
     }
 }
