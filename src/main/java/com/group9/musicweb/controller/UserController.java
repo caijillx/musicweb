@@ -36,6 +36,11 @@ public class UserController {
         return "user/login";
     }
 
+    @GetMapping("/index")
+    public String index() {
+        return "user/index";
+    }
+
     @PostMapping("/login")
     public String login(@RequestParam String username,
                         @RequestParam String password,
