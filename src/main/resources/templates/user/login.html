@@ -5,13 +5,14 @@
     <link rel="stylesheet" href="/static/Semantic-UI-CSS-master/semantic.min.css">
     <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script src="/static/Semantic-UI-CSS-master/semantic.min.js"></script>
+    <script src="https://cdn.bootcss.com/holder/2.9.4/holder.js"></script>
     <title>登录</title>
 </head>
 <body>
 <div style="margin: auto;width: 35%;height: 15%;"></div>
 <div style="margin: auto;width: 35%;height: 50%;">
     <div class="ui horizontal divider" style="font-size:20px">登录</div>
-    <form class="ui form segment" method="post"  action="#" th:action="@{/user/login}">
+    <form class="ui form segment" method="post" action="#" th:action="@{/user/login}">
 
         <div class="field">
             <label>Username</label>
@@ -21,10 +22,12 @@
             <label>Password</label>
             <input type="password" placeholder="请输入密码" name="password">
         </div>
-        <div style="text-align: center;"><button class="ui primary button" style="width: 100%">登录</button></div>
+        <div style="text-align: center;">
+            <button class="ui primary button" style="width: 100%">登录</button>
+        </div>
         <div class="ui error message"></div>
         <!--        只有有message才显示-->
-        <div class="ui negative message"  th:unless="${#strings.isEmpty(message)}" th:text="${message}">用户名和密码错误</div>
+        <div class="ui negative message" th:unless="${#strings.isEmpty(message)}" th:text="${message}">用户名和密码错误</div>
     </form>
 </div>
 </body>
@@ -38,8 +41,8 @@
                     identifier: 'username',
                     rules: [
                         {
-                            type   : 'empty',
-                            prompt : '请输入用户名！'
+                            type: 'empty',
+                            prompt: '请输入用户名！'
                         }
                     ]
                 },
@@ -47,12 +50,12 @@
                     identifier: 'password',
                     rules: [
                         {
-                            type   : 'empty',
-                            prompt : '请输入密码！'
+                            type: 'empty',
+                            prompt: '请输入密码！'
                         },
                         {
-                            type   : 'minLength[6]',
-                            prompt : '您的密码至少应该有6个字符！'
+                            type: 'minLength[6]',
+                            prompt: '您的密码至少应该有6个字符！'
                         }
                     ]
                 }

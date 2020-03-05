@@ -14,6 +14,16 @@ public class User {
     private String headresaddr;
     private String phone;
     private String email;
+    private String info;
+
+    public String getInfo() {
+        return info;
+    }
+
+    public void setInfo(String info) {
+        this.info = info;
+    }
+
     public int getId() {
         return id;
     }
@@ -70,16 +80,4 @@ public class User {
         this.email = email;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", pwd='" + pwd + '\'' +
-                ", xb='" + xb + '\'' +
-                ", headresaddr='" + headresaddr + '\'' +
-                ", phone='" + phone + '\'' +
-                ", email='" + email + '\'' +
-                '}';
-    }
 }

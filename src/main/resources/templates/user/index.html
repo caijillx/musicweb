@@ -1,5 +1,6 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="zh-CN" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,70 +12,27 @@
     <link rel="stylesheet" href="../static/base/css/bootstrap.min.css">
     <link rel="stylesheet" href="../static/base/css/bootstrap-movie.css">
     <link rel="stylesheet" href="../static/base/css/animate.css">
+    <script src="https://cdn.bootcss.com/holder/2.9.4/holder.js"></script>
+
     <style>
-        .navbar-brand>img {
+        .navbar-brand > img {
             display: inline;
         }
-
     </style>
     <style>
-        .media{
-            padding:3px;
-            border:1px solid #ccc
+        .media {
+            padding: 3px;
+            border: 1px solid #ccc
         }
 
     </style>
 </head>
 
 <body>
-<!--导航-->
-<nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container">
-        <!--小屏幕导航按钮和logo-->
-        <div class="navbar-header">
-            <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a href="index.html" class="navbar-brand" style="width:250px;">
-                <img src="../static/base/images/logo.png" style="height:30px;">&nbsp;hello音乐
-            </a>
-        </div>
-        <!--小屏幕导航按钮和logo-->
-        <!--导航-->
-        <div class="navbar-collapse collapse">
-            <form class="navbar-form navbar-left" role="search" style="margin-top:18px;">
-                <div class="form-group input-group">
-                    <input type="text" class="form-control" placeholder="请输入音乐名！">
-                    <span class="input-group-btn">
-                        <a class="btn btn-default" href="search.html"><span class="glyphicon glyphicon-search"></span>&nbsp;搜索</a>
-                    </span>
-                </div>
-            </form>
-            <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <a class="curlink" href="index.html"><span class="glyphicon glyphicon-film"></span>&nbsp;音乐</a>
-                </li>
-                <li>
-                    <a class="curlink" href="login.html"><span class="glyphicon glyphicon-log-in"></span>&nbsp;登录</a>
-                </li>
-                <li>
-                    <a class="curlink" href="register.html"><span class="glyphicon glyphicon-plus"></span>&nbsp;注册</a>
-                </li>
-                <li>
-                    <a class="curlink" href="logout.html"><span class="glyphicon glyphicon-log-out"></span>&nbsp;退出</a>
-                </li>
-                <li>
-                    <a class="curlink" href="user.html"><span class="glyphicon glyphicon-user"></span>&nbsp;会员</a>
-                </li>
-            </ul>
-        </div>
-        <!--导航-->
 
-    </div>
-</nav>
-<!--导航-->
+
+<div th:replace="/user/head::header"></div>
+
 <!--内容-->
 <!--内容-->
 <!--热门音乐-->
@@ -82,7 +40,8 @@
     <div class="container">
         <div class="row wow fadeInRight" data-wow-delay="0.6s">
             <div class="row">
-                <iframe class="wow fadeIn" width="100%" height="375px" frameborder=0 scrolling=no src="../static/animation/animation.html"></iframe>
+                <iframe class="wow fadeIn" width="100%" height="375px" frameborder=0 scrolling=no
+                        src="../static/animation/animation.html"></iframe>
             </div>
         </div>
     </div>
@@ -124,31 +83,40 @@
                     <tr>
                         <td>上映时间</td>
                         <td>
-                            <a class="label label-default"><span class="glyphicon glyphicon-time"></span>&nbsp;最近</span></a>
+                            <a class="label label-default"><span class="glyphicon glyphicon-time"></span>&nbsp;最近</span>
+                            </a>
                             &nbsp;
-                            <a class="label label-default"><span class="glyphicon glyphicon-time"></span>&nbsp;2017</span></a>
+                            <a class="label label-default"><span
+                                    class="glyphicon glyphicon-time"></span>&nbsp;2017</span></a>
                             &nbsp;
-                            <a class="label label-default"><span class="glyphicon glyphicon-time"></span>&nbsp;2016</span></a>
+                            <a class="label label-default"><span
+                                    class="glyphicon glyphicon-time"></span>&nbsp;2016</span></a>
                             &nbsp;
-                            <a class="label label-default"><span class="glyphicon glyphicon-time"></span>&nbsp;2015</span></a>
+                            <a class="label label-default"><span
+                                    class="glyphicon glyphicon-time"></span>&nbsp;2015</span></a>
                             &nbsp;
-                            <a class="label label-default"><span class="glyphicon glyphicon-time"></span>&nbsp;更早</span></a>
+                            <a class="label label-default"><span class="glyphicon glyphicon-time"></span>&nbsp;更早</span>
+                            </a>
                         </td>
                     </tr>
                     <tr>
                         <td>播放数量</td>
                         <td>
-                            <a class="label label-success"><span class="glyphicon glyphicon-arrow-down"></span>&nbsp;从高到底</span></a>
+                            <a class="label label-success"><span class="glyphicon glyphicon-arrow-down"></span>&nbsp;从高到底</span>
+                            </a>
                             &nbsp;
-                            <a class="label label-danger"><span class="glyphicon glyphicon-arrow-up"></span>&nbsp;从低到高</span></a>
+                            <a class="label label-danger"><span
+                                    class="glyphicon glyphicon-arrow-up"></span>&nbsp;从低到高</span></a>
                         </td>
                     </tr>
                     <tr>
                         <td>评论数量</td>
                         <td>
-                            <a class="label label-success"><span class="glyphicon glyphicon-arrow-down"></span>&nbsp;从高到底</span></a>
+                            <a class="label label-success"><span class="glyphicon glyphicon-arrow-down"></span>&nbsp;从高到底</span>
+                            </a>
                             &nbsp;
-                            <a class="label label-danger"><span class="glyphicon glyphicon-arrow-up"></span>&nbsp;从低到高</span></a>
+                            <a class="label label-danger"><span
+                                    class="glyphicon glyphicon-arrow-up"></span>&nbsp;从低到高</span></a>
                         </td>
                     </tr>
                 </table>
@@ -168,7 +136,8 @@
                             <span class="glyphicon glyphicon-star-empty" style="color:#FFD119"></span>
                         </div>
                     </div>
-                    <a href="play.html" class="btn btn-primary" target="_blank" role="button"><span class="glyphicon glyphicon-play"></span>&nbsp;播放</a>
+                    <a href="/user/play" class="btn btn-primary" target="_blank" role="button"><span
+                            class="glyphicon glyphicon-play"></span>&nbsp;播放</a>
                 </div>
             </div>
             <div class="col-md-3">
@@ -186,7 +155,8 @@
                             <span class="glyphicon glyphicon-star-empty" style="color:#FFD119"></span>
                         </div>
                     </div>
-                    <a href="play.html" class="btn btn-primary" target="_blank" role="button"><span class="glyphicon glyphicon-play"></span>&nbsp;播放</a>
+                    <a href="/user/play" class="btn btn-primary" target="_blank" role="button"><span
+                            class="glyphicon glyphicon-play"></span>&nbsp;播放</a>
                 </div>
             </div>
             <div class="col-md-3">
@@ -204,7 +174,8 @@
                             <span class="glyphicon glyphicon-star-empty" style="color:#FFD119"></span>
                         </div>
                     </div>
-                    <a href="play.html" class="btn btn-primary" target="_blank" role="button"><span class="glyphicon glyphicon-play"></span>&nbsp;播放</a>
+                    <a href="/user/play" class="btn btn-primary" target="_blank" role="button"><span
+                            class="glyphicon glyphicon-play"></span>&nbsp;播放</a>
                 </div>
             </div>
             <div class="col-md-3">
@@ -222,7 +193,8 @@
                             <span class="glyphicon glyphicon-star-empty" style="color:#FFD119"></span>
                         </div>
                     </div>
-                    <a href="play.html" class="btn btn-primary" target="_blank" role="button"><span class="glyphicon glyphicon-play"></span>&nbsp;播放</a>
+                    <a href="/user/play" class="btn btn-primary" target="_blank" role="button"><span
+                            class="glyphicon glyphicon-play"></span>&nbsp;播放</a>
                 </div>
             </div>
             <div class="col-md-3">
@@ -240,7 +212,8 @@
                             <span class="glyphicon glyphicon-star-empty" style="color:#FFD119"></span>
                         </div>
                     </div>
-                    <a href="play.html" class="btn btn-primary" target="_blank" role="button"><span class="glyphicon glyphicon-play"></span>&nbsp;播放</a>
+                    <a href="/user/play" class="btn btn-primary" target="_blank" role="button"><span
+                            class="glyphicon glyphicon-play"></span>&nbsp;播放</a>
                 </div>
             </div>
             <div class="col-md-3">
@@ -258,7 +231,8 @@
                             <span class="glyphicon glyphicon-star-empty" style="color:#FFD119"></span>
                         </div>
                     </div>
-                    <a href="play.html" class="btn btn-primary" target="_blank" role="button"><span class="glyphicon glyphicon-play"></span>&nbsp;播放</a>
+                    <a href="/user/play" class="btn btn-primary" target="_blank" role="button"><span
+                            class="glyphicon glyphicon-play"></span>&nbsp;播放</a>
                 </div>
             </div>
             <div class="col-md-3">
@@ -276,7 +250,8 @@
                             <span class="glyphicon glyphicon-star-empty" style="color:#FFD119"></span>
                         </div>
                     </div>
-                    <a href="play.html" class="btn btn-primary" target="_blank" role="button"><span class="glyphicon glyphicon-play"></span>&nbsp;播放</a>
+                    <a href="/user/play" class="btn btn-primary" target="_blank" role="button"><span
+                            class="glyphicon glyphicon-play"></span>&nbsp;播放</a>
                 </div>
             </div>
             <div class="col-md-3">
@@ -294,7 +269,8 @@
                             <span class="glyphicon glyphicon-star-empty" style="color:#FFD119"></span>
                         </div>
                     </div>
-                    <a href="play.html" class="btn btn-primary" target="_blank" role="button"><span class="glyphicon glyphicon-play"></span>&nbsp;播放</a>
+                    <a href="/user/play" class="btn btn-primary" target="_blank" role="button"><span
+                            class="glyphicon glyphicon-play"></span>&nbsp;播放</a>
                 </div>
             </div>
             <div class="col-md-3">
@@ -312,7 +288,8 @@
                             <span class="glyphicon glyphicon-star-empty" style="color:#FFD119"></span>
                         </div>
                     </div>
-                    <a href="play.html" class="btn btn-primary" target="_blank" role="button"><span class="glyphicon glyphicon-play"></span>&nbsp;播放</a>
+                    <a href="/user/play" class="btn btn-primary" target="_blank" role="button"><span
+                            class="glyphicon glyphicon-play"></span>&nbsp;播放</a>
                 </div>
             </div>
             <div class="col-md-3">
@@ -330,7 +307,8 @@
                             <span class="glyphicon glyphicon-star-empty" style="color:#FFD119"></span>
                         </div>
                     </div>
-                    <a href="play.html" class="btn btn-primary" target="_blank" role="button"><span class="glyphicon glyphicon-play"></span>&nbsp;播放</a>
+                    <a href="/user/play" class="btn btn-primary" target="_blank" role="button"><span
+                            class="glyphicon glyphicon-play"></span>&nbsp;播放</a>
                 </div>
             </div>
             <div class="col-md-3">
@@ -348,7 +326,8 @@
                             <span class="glyphicon glyphicon-star-empty" style="color:#FFD119"></span>
                         </div>
                     </div>
-                    <a href="play.html" class="btn btn-primary" target="_blank" role="button"><span class="glyphicon glyphicon-play"></span>&nbsp;播放</a>
+                    <a href="/user/play" class="btn btn-primary" target="_blank" role="button"><span
+                            class="glyphicon glyphicon-play"></span>&nbsp;播放</a>
                 </div>
             </div>
             <div class="col-md-3">
@@ -366,7 +345,8 @@
                             <span class="glyphicon glyphicon-star-empty" style="color:#FFD119"></span>
                         </div>
                     </div>
-                    <a href="play.html" class="btn btn-primary" target="_blank" role="button"><span class="glyphicon glyphicon-play"></span>&nbsp;播放</a>
+                    <a href="/user/play" class="btn btn-primary" target="_blank" role="button"><span
+                            class="glyphicon glyphicon-play"></span>&nbsp;播放</a>
                 </div>
             </div>
             <div class="col-md-12">
@@ -420,13 +400,13 @@
 <script src="../static/lazyload/jquery.lazyload.min.js"></script>
 <script src="//cdn.bootcss.com/holder/2.9.4/holder.min.js"></script>
 <script>
-    $(function() {
+    $(function () {
         new WOW().init();
     })
 
 </script>
 <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
         $("img.lazy").lazyload({
             effect: "fadeIn"
         });
