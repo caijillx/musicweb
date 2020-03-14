@@ -17,5 +17,6 @@ public interface UserService {
     void updatePwd(User user,String password);
     void saveUser(User user);
     List<Comment> queryComment(int userid);
+    User findUserById(int userid);
 }
 

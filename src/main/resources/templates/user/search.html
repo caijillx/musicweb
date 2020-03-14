@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1 , user-scalable=no">
+    <title>微音乐</title>
+    <link rel="shortcut icon" href="../static/base/images/logo.png">
+    <link rel="stylesheet" href="../static/base/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/base/css/bootstrap-movie.css">
+    <link rel="stylesheet" href="../static/base/css/animate.css">
+    <style>
+        .navbar-brand > img {
+            display: inline;
+        }
+
+    </style>
+    <style>
+        .media {
+            padding: 3px;
+            border: 1px solid #ccc
+        }
+
+    </style>
+</head>
+
+<body>
+<!--导航-->
+<div th:replace="/user/head::header"></div>
+<!--导航-->
+<!--内容-->
+<div class="container" style="margin-top:76px">
+    <div class="row">
+        <div class="col-md-12">
+            <ol class="breadcrumb" style="margin-top:6px;">
+                <li th:text="'与\''+${key}+'\'有关的音乐，共'+${count}+'首'"></li>
+            </ol>
+        </div>
+
+        <div class="col-md-12">
+
+            <div th:each="music:${musicList}" class="media">
+                <div class="media-left">
+                    <a th:href="@{'/user/play/'+${music.id}}">
+                        <img class="media-object"
+                             th:src="${music.imgresaddr}==''?'/user/holder.js/131x83':@{'../static/users/music/images/'+${music.imgresaddr}}"
+                             style="height: 83px;width: 131px">
+                    </a>
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading" th:inline="text">[[${music.name}]]<a th:href="@{'/user/playmusic/'+${music.id}}"
+                                                                                   class="label label-primary pull-right"><span
+                            class="glyphicon glyphicon-play"></span>播放音乐</a></h4>
+                    <text th:text="'简介：'+${music.info}"></text>
+                </div>
+            </div>
+
+            <div class="col-md-12 text-center"></div>
+        </div>
+    </div>
+</div>
+<!--内容-->
+
+<script src="../static/base/js/jquery.min.js"></script>
+<script src="../static/base/js/bootstrap.min.js"></script>
+<script src="../static/base/js/jquery.singlePageNav.min.js"></script>
+<script src="../static/base/js/wow.min.js"></script>
+<script src="../static/lazyload/jquery.lazyload.min.js"></script>
+<script src="//cdn.bootcss.com/holder/2.9.4/holder.min.js"></script>
+<script>
+    $(function () {
+        new WOW().init();
+    })
+
+</script>
+<script>
+    $(document).ready(function () {
+        $("img.lazy").lazyload({
+            effect: "fadeIn"
+        });
+        $("#do_search").click(function () {
+            var key = $("#key_music").val();
+            location.href = "/user/search?key=" + key;
+        });
+    });
+</script>
+</body>
+</html>

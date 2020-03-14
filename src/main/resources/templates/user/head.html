@@ -4,6 +4,7 @@
     <div th:fragment="header">
         <!--导航-->
         <nav class="navbar navbar-default navbar-fixed-top">
+
             <div class="container">
                 <!--小屏幕导航按钮和logo-->
                 <div class="navbar-header">
@@ -13,7 +14,7 @@
                         <span class="icon-bar"></span>
                     </button>
                     <a href="/user/index" class="navbar-brand" style="width:250px;">
-                        <img src="../static/base/images/logo.png" style="height:30px;">&nbsp;微音乐
+                        <img src="/static/base/images/logo.png" style="height:30px;">&nbsp;微音乐
                     </a>
                 </div>
                 <!--小屏幕导航按钮和logo-->
@@ -21,9 +22,9 @@
                 <div class="navbar-collapse collapse">
                     <form class="navbar-form navbar-left" role="search" style="margin-top:18px;">
                         <div class="form-group input-group">
-                            <input type="text" class="form-control" placeholder="请输入音乐名！">
+                            <input type="text" class="form-control" placeholder="请输入音乐名！" id="key_music">
                             <span class="input-group-btn">
-                        <a class="btn btn-default" href="search.html"><span class="glyphicon glyphicon-search"></span>&nbsp;搜索</a>
+                        <a class="btn btn-default" id="do_search"><span class="glyphicon glyphicon-search"></span>&nbsp;搜索</a>
                     </span>
                         </div>
                     </form>
@@ -46,10 +47,10 @@
                     </ul>
                 </div>
                 <!--导航-->
-
             </div>
         </nav>
         <!--导航-->
+
     </div>
 </head>
 </html>

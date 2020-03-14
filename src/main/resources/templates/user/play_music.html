@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/2005/Atom">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="/static/base/images/logo.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>在线音乐网站</title>
+    <link rel="stylesheet" href="/static/dist/music.css">
+    <style>
+        .container {
+            width: 100%;
+            display: flex; /*设为 Flex 布局以后，子元素的float、clear和vertical-align属性将失效*/
+            display: -webkit-flex; /* Safari */
+            flex-direction: column; /*容器内项目的排列方向(默认横向排列 row)*/
+            flex-wrap: nowrap; /*容器内项目换行方式*/
+            justify-content: center; /*项目在主轴上的对齐方式*/
+            align-items: center; /*项目在交叉轴上如何对齐*/
+            align-content: center; /*定义了多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用*/
+        }
+
+    </style>
+</head>
+<body class="blueHour">
+<div class="container" style="margin-top: 80px">
+    <audio id="audio">
+        <source th:title="${music.name}" data-img="/static/dist/cover.jpg"
+                th:src="@{'/static/users/music/songs/'+${music.resaddr}}">
+    </audio>
+    <div class="music" style="margin-top: 10px">
+        <div class="header">
+            <h1><small>微音乐</small></h1>
+        </div>
+        <div class="fengmian">
+            <img th:src="@{'/static/users/music/images/'+${music.imgresaddr}}" id="music-img" alt="">
+        </div>
+        <div id="title">
+            hey!
+        </div>
+        <div class="jindu">
+				<span id="music-bar">
+					<span id="load-bar"></span>
+					<span id="played-bar"></span>
+				</span>
+            <span id="voice-bar">
+					<span id="voiced-bar"></span>
+				</span>
+            <div id="time">
+                <span id="current-time">0:00</span>
+                <span id="total-time"></span>
+            </div>
+        </div>
+        <div class="controls">
+            <a id="xunhuan" href="javascript:;">循环</a>
+            <a id="prev" href="javascript:;"><</a>
+            <a id="play" href="javascript:;">Play</a>
+            <a id="next" href="javascript:;">></a>
+            <a id="jingyin" href="javascript:;">静音</a>
+        </div>
+    </div>
+</div>
+
+<div id="footer">
+    <a href="/user/index" target="_blank">返回首页</a>
+    <a th:href="@{'/user/play/'+${music.id}}" target="_blank">观看mv</a>
+    <a href="#" target="_blank">随机推荐</a>
+</div>
+<script type="text/javascript" src="/static/dist/music.js"></script>
+<script>
+    // 回调函数将返回的内容添加到结果区（需要在页面加载完后加载上，为后面执行回调）
+    function jsonpcallback(rs) {
+        var resultHtml = '歌曲：<strong>' + rs.result.songs[0].name + '</strong>' +
+            '歌手：<strong>' + rs.result.songs[0].artists[0].name + '</strong>' +
+            '<a href="javascript:;" id="to-play">立即播放</a>';
+        result.innerHTML = resultHtml;
+        result.setAttribute('data-audio', rs.result.songs[0].audio);
+        result.setAttribute('data-img', rs.result.songs[0].album.picUrl);
+        result.setAttribute('data-music', rs.result.songs[0].name);
+        result.setAttribute('data-singer', rs.result.songs[0].artists[0].name);
+        result.style.opacity = '1';
+
+    };
+</script>
+</body>
+</html>

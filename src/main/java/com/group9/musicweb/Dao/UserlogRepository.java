@@ -11,4 +11,6 @@ import java.util.List;
 public interface UserlogRepository extends JpaRepository<Userlog, Integer> {
     @Query(value = "select * from userlog where user_id = ?1 order by add_time desc", nativeQuery = true)
     List<Userlog> QueryUserlog(int userid);
+
+
 }

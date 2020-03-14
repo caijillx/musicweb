@@ -22,6 +22,25 @@ public class Comment {
     private Date creatTime;
 
     @ManyToOne
+    private Music music;
+
+    public Music getMusic() {
+        return music;
+    }
+
+    public void setMusic(Music music) {
+        this.music = music;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    @ManyToOne
     private User user;
     @Override
     public String toString() {

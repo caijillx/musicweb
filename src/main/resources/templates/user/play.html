@@ -1,21 +1,21 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="zh-CN" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1 , user-scalable=no">
-    <title>微电影</title>
-    <link rel="shortcut icon" href="../static/base/images/logo.png">
-    <link rel="stylesheet" href="../static/base/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../static/base/css/bootstrap-movie.css">
-    <link rel="stylesheet" href="../static/base/css/animate.css">
+    <title>微音乐</title>
+    <link rel="shortcut icon" href="/static/base/images/logo.png">
+    <link rel="stylesheet" href="/static/base/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/base/css/bootstrap-movie.css">
+    <link rel="stylesheet" href="/static/base/css/animate.css">
     <!--播放页面-->
-    <link rel="stylesheet" type="text/css" href="../static/jwplayer/skins/stormtrooper.css">
-    <script type="text/javascript" src="../static/ueditor/ueditor.config.js"></script>
-    <script type="text/javascript" src="../static/ueditor/ueditor.all.js"></script>
-    <script type="text/javascript" src="../static/ueditor/lang/zh-cn/zh-cn.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/jwplayer/skins/stormtrooper.css">
+    <script type="text/javascript" src="/static/ueditor/ueditor.config.js"></script>
+    <script type="text/javascript" src="/static/ueditor/ueditor.all.js"></script>
+    <script type="text/javascript" src="/static/ueditor/lang/zh-cn/zh-cn.js"></script>
     <script>
         SyntaxHighlighter.all();
     </script>
@@ -41,52 +41,7 @@
 
 <body>
 <!--导航-->
-<nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container">
-        <!--小屏幕导航按钮和logo-->
-        <div class="navbar-header">
-            <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a href="index.html" class="navbar-brand" style="width:250px;">
-                <img src="../static/base/images/logo.png" style="height:30px;">&nbsp;微电影
-            </a>
-        </div>
-        <!--小屏幕导航按钮和logo-->
-        <!--导航-->
-        <div class="navbar-collapse collapse">
-            <form class="navbar-form navbar-left" role="search" style="margin-top:18px;">
-                <div class="form-group input-group">
-                    <input type="text" class="form-control" placeholder="请输入电影名！">
-                    <span class="input-group-btn">
-                        <a class="btn btn-default" href="search.html"><span class="glyphicon glyphicon-search"></span>&nbsp;搜索</a>
-                    </span>
-                </div>
-            </form>
-            <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <a class="curlink" href="index.html"><span class="glyphicon glyphicon-film"></span>&nbsp;电影</a>
-                </li>
-                <li>
-                    <a class="curlink" href="login.html"><span class="glyphicon glyphicon-log-in"></span>&nbsp;登录</a>
-                </li>
-                <li>
-                    <a class="curlink" href="register.html"><span class="glyphicon glyphicon-plus"></span>&nbsp;注册</a>
-                </li>
-                <li>
-                    <a class="curlink" href="logout.html"><span class="glyphicon glyphicon-log-out"></span>&nbsp;退出</a>
-                </li>
-                <li>
-                    <a class="curlink" href="user.html"><span class="glyphicon glyphicon-user"></span>&nbsp;会员</a>
-                </li>
-            </ul>
-        </div>
-        <!--导航-->
-
-    </div>
-</nav>
+<div th:replace="/user/head::header"></div>
 <!--导航-->
 <!--内容-->
 <div class="container" style="margin-top:76px;width: 1170px;">
@@ -97,7 +52,7 @@
         <div class="col-md-4" style="height:500px;">
             <div class="panel panel-info">
                 <div class="panel-heading">
-                    <h3 class="panel-title"><span class="glyphicon glyphicon-facetime-video"></span>&nbsp;电影介绍</h3>
+                    <h3 class="panel-title"><span class="glyphicon glyphicon-facetime-video"></span>&nbsp;音乐介绍</h3>
                 </div>
                 <div class="panel-body" style="height:459px;">
                     <table class="table">
@@ -105,63 +60,71 @@
                             <td style="width:30%;color:#ccc;font-weight:bold;font-style:italic;">
                                 <span class="glyphicon glyphicon-film"></span>&nbsp;片名
                             </td>
-                            <td>环太平洋</td>
+                            <td th:text="${music.name}"></td>
+                        </tr>
+                        <tr>
+                            <td style="color:#ccc;font-weight:bold;font-style:italic;">
+                                <span class="glyphicon glyphicon-arrow-right"></span>&nbsp;作者
+                            </td>
+                            <td th:text="${music.zuozhe}">
+                                该片主要讲述了人类为了抵抗怪兽的进攻，研制出了高大的机器战士与来犯怪兽进行对抗的故事。
+                            </td>
                         </tr>
                         <tr>
                             <td style="color:#ccc;font-weight:bold;font-style:italic;">
                                 <span class="glyphicon glyphicon-tag"></span>&nbsp;标签
                             </td>
-                            <td>科幻</td>
+                            <td th:text="${music.name}">科幻</td>
                         </tr>
-                        <tr>
-                            <td style="color:#ccc;font-weight:bold;font-style:italic;">
-                                <span class="glyphicon glyphicon-time"></span>&nbsp;片长
-                            </td>
-                            <td>05:04</td>
-                        </tr>
-                        <tr>
-                            <td style="color:#ccc;font-weight:bold;font-style:italic;">
-                                <span class="glyphicon glyphicon-map-marker"></span>&nbsp;地区
-                            </td>
-                            <td>美国</td>
-                        </tr>
-                        <tr>
-                            <td style="color:#ccc;font-weight:bold;font-style:italic;">
-                                <span class="glyphicon glyphicon-star"></span>&nbsp;星级
-                            </td>
-                            <td>
-                                <div>
-                                    <span class="glyphicon glyphicon-star" style="color:#FFD119"></span>
-                                    <span class="glyphicon glyphicon-star" style="color:#FFD119"></span>
-                                    <span class="glyphicon glyphicon-star" style="color:#FFD119"></span>
-                                    <span class="glyphicon glyphicon-star-empty" style="color:#FFD119"></span>
-                                    <span class="glyphicon glyphicon-star-empty" style="color:#FFD119"></span>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="color:#ccc;font-weight:bold;font-style:italic;">
-                                <span class="glyphicon glyphicon-calendar"></span>&nbsp;上映时间
-                            </td>
-                            <td>2013年7月12日</td>
-                        </tr>
+                        <!--                        <tr>-->
+                        <!--                            <td style="color:#ccc;font-weight:bold;font-style:italic;">-->
+                        <!--                                <span class="glyphicon glyphicon-time"></span>&nbsp;片长-->
+                        <!--                            </td>-->
+                        <!--                            <td>05:04</td>-->
+                        <!--                        </tr>-->
+                        <!--                        <tr>-->
+                        <!--                            <td style="color:#ccc;font-weight:bold;font-style:italic;">-->
+                        <!--                                <span class="glyphicon glyphicon-map-marker"></span>&nbsp;地区-->
+                        <!--                            </td>-->
+                        <!--                            <td>美国</td>-->
+                        <!--                        </tr>-->
+                        <!--                        <tr>-->
+                        <!--                            <td style="color:#ccc;font-weight:bold;font-style:italic;">-->
+                        <!--                                <span class="glyphicon glyphicon-star"></span>&nbsp;星级-->
+                        <!--                            </td>-->
+                        <!--                            <td>-->
+                        <!--                                <div>-->
+                        <!--                                    <span class="glyphicon glyphicon-star" style="color:#FFD119"></span>-->
+                        <!--                                    <span class="glyphicon glyphicon-star" style="color:#FFD119"></span>-->
+                        <!--                                    <span class="glyphicon glyphicon-star" style="color:#FFD119"></span>-->
+                        <!--                                    <span class="glyphicon glyphicon-star-empty" style="color:#FFD119"></span>-->
+                        <!--                                    <span class="glyphicon glyphicon-star-empty" style="color:#FFD119"></span>-->
+                        <!--                                </div>-->
+                        <!--                            </td>-->
+                        <!--                        </tr>-->
+                        <!--                        <tr>-->
+                        <!--                            <td style="color:#ccc;font-weight:bold;font-style:italic;">-->
+                        <!--                                <span class="glyphicon glyphicon-calendar"></span>&nbsp;上映时间-->
+                        <!--                            </td>-->
+                        <!--                            <td>2013年7月12日</td>-->
+                        <!--                        </tr>-->
                         <tr>
                             <td style="color:#ccc;font-weight:bold;font-style:italic;">
                                 <span class="glyphicon glyphicon-play"></span>&nbsp;播放数量
                             </td>
-                            <td>1000</td>
+                            <td th:text="${music.play_num}">1000</td>
                         </tr>
                         <tr>
                             <td style="color:#ccc;font-weight:bold;font-style:italic;">
                                 <span class="glyphicon glyphicon-comment"></span>&nbsp;评论数量
                             </td>
-                            <td>1000</td>
+                            <td th:text="${music.comment_num}">1000</td>
                         </tr>
                         <tr>
                             <td style="color:#ccc;font-weight:bold;font-style:italic;">
-                                <span class="glyphicon glyphicon-picture"></span>&nbsp;影片介绍
+                                <span class="glyphicon glyphicon-picture"></span>&nbsp;音乐介绍
                             </td>
-                            <td>
+                            <td th:text="${music.info}">
                                 该片主要讲述了人类为了抵抗怪兽的进攻，研制出了高大的机器战士与来犯怪兽进行对抗的故事。
                             </td>
                         </tr>
@@ -172,139 +135,59 @@
         <div class="col-md-12" style="margin-top:6px;">
             <div class="panel panel-danger">
                 <div class="panel-heading">
-                    <h3 class="panel-title"><span class="glyphicon glyphicon-comment"></span>&nbsp;电影评论</h3>
+                    <h3 class="panel-title"><span class="glyphicon glyphicon-comment"></span>&nbsp;音乐评论</h3>
                 </div>
                 <div class="panel-body">
-                    <div class="alert alert-danger alert-dismissible" role="alert">
-                        <button type="button" class="close" data-dismiss="alert">
-                            <span aria-hidden="true">×</span>
-                            <span class="sr-only">Close</span>
-                        </button>
-                        <strong>请先<a href="login.html" target="_blank" class="text-info">登录</a>，才可参与评论！</strong>
-                    </div>
+                    <!--                    <div class="alert alert-danger alert-dismissible" role="alert">-->
+                    <!--                        <button type="button" class="close" data-dismiss="alert">-->
+                    <!--                            <span aria-hidden="true">×</span>-->
+                    <!--                            <span class="sr-only">Close</span>-->
+                    <!--                        </button>-->
+                    <!--                        <strong>请先<a href="login.html" target="_blank" class="text-info">登录</a>，才可参与评论！</strong>-->
+                    <!--                    </div>-->
                     <ol class="breadcrumb" style="margin-top:6px;">
-                        <li>全部评论(5)</li>
+                        <li th:text="'全部评论('+${comments.size()}+')'"></li>
                     </ol>
-                    <form role="form" style="margin-bottom:6px;">
+                    <form role="form" style="margin-bottom:6px;" method="post" th:action="@{'/user/play/'+${music.id}}">
                         <div class="form-group">
                             <div>
                                 <label for="input_content">内容</label>
-                                <textarea id="input_content"></textarea>
+                                <textarea id="input_content" name="comment"></textarea>
                             </div>
                             <div class="col-xs-12" id="error_content"></div>
                         </div>
-                        <a class="btn btn-success" id="btn-sub"><span class="glyphicon glyphicon-edit"></span>&nbsp;提交评论</a>
+                        <button class="btn btn-success" id="btn-sub"><span class="glyphicon glyphicon-edit"></span>&nbsp;提交评论
+                        </button>
                         &nbsp;
-                        <a class="btn btn-danger" id="btn-col"><span class="glyphicon glyphicon-heart"></span>&nbsp;收藏电影</a>
+                        <a class="btn btn-danger" id="btn-col"><span class="glyphicon glyphicon-heart"></span>&nbsp;收藏音乐</a>
+                        <div class="col-md-12">
+                            <p style="color: green" id="show_col_msg"></p>
+                        </div>
                     </form>
-                    <ul class="commentList">
-                        <li class="item cl">
+                    <div class="ui positive message" th:unless="${#strings.isEmpty(ok)}" th:text="${ok}"
+                         style="color: #0f9e60"></div>
+                    <ul class="commentList" style="margin-top: 20px;">
+                        <li class="item cl" th:each="comment : ${comments}">
                             <a href="user.html">
                                 <i class="avatar size-L radius">
-                                    <img alt="50x50" src="holder.js/50x50" class="img-circle"
-                                         style="border:1px solid #abcdef;">
+                                    <img alt="50x50"
+                                         th:src="${comment.user.headresaddr}==''?'holder.js/50x50':@{'/static/users/face/'+${comment.user.headresaddr}}"
+                                         class="img-circle"
+                                         style="border:1px solid #abcdef; width: 50px;height: 50px;">
                                 </i>
                             </a>
                             <div class="comment-main">
                                 <header class="comment-header">
                                     <div class="comment-meta">
-                                        <a class="comment-author" href="user.html">xiaoli</a>
+                                        <a class="comment-author" href="user.html"
+                                           th:text="${comment.user.name}">xiaoli</a>
                                         评论于
-                                        <time title="2016-12-07 09:12:51" datetime="2016-12-07 09:12:51">2017-03-01
-                                            09:12:51
+                                        <time th:text="${comment.creatTime}">2017-03-01
                                         </time>
                                     </div>
                                 </header>
                                 <div class="comment-body">
-                                    <p>这电影真好看！</p>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="item cl">
-                            <a href="user.html">
-                                <i class="avatar size-L radius">
-                                    <img alt="50x50" src="holder.js/50x50" class="img-circle"
-                                         style="border:1px solid #abcdef;">
-                                </i>
-                            </a>
-                            <div class="comment-main">
-                                <header class="comment-header">
-                                    <div class="comment-meta">
-                                        <a class="comment-author" href="user.html">xiaoli</a>
-                                        评论于
-                                        <time title="2016-12-07 09:12:51" datetime="2016-12-07 09:12:51">2017-03-01
-                                            09:12:51
-                                        </time>
-                                    </div>
-                                </header>
-                                <div class="comment-body">
-                                    <p>这电影真好看！</p>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="item cl">
-                            <a href="user.html">
-                                <i class="avatar size-L radius">
-                                    <img alt="50x50" src="holder.js/50x50" class="img-circle"
-                                         style="border:1px solid #abcdef;">
-                                </i>
-                            </a>
-                            <div class="comment-main">
-                                <header class="comment-header">
-                                    <div class="comment-meta">
-                                        <a class="comment-author" href="user.html">xiaoli</a>
-                                        评论于
-                                        <time title="2016-12-07 09:12:51" datetime="2016-12-07 09:12:51">2017-03-01
-                                            09:12:51
-                                        </time>
-                                    </div>
-                                </header>
-                                <div class="comment-body">
-                                    <p>这电影真好看！</p>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="item cl">
-                            <a href="user.html">
-                                <i class="avatar size-L radius">
-                                    <img alt="50x50" src="holder.js/50x50" class="img-circle"
-                                         style="border:1px solid #abcdef;">
-                                </i>
-                            </a>
-                            <div class="comment-main">
-                                <header class="comment-header">
-                                    <div class="comment-meta">
-                                        <a class="comment-author" href="user.html">xiaoli</a>
-                                        评论于
-                                        <time title="2016-12-07 09:12:51" datetime="2016-12-07 09:12:51">2017-03-01
-                                            09:12:51
-                                        </time>
-                                    </div>
-                                </header>
-                                <div class="comment-body">
-                                    <p>这电影真好看！</p>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="item cl">
-                            <a href="user.html">
-                                <i class="avatar size-L radius">
-                                    <img alt="50x50" src="holder.js/50x50" class="img-circle"
-                                         style="border:1px solid #abcdef;">
-                                </i>
-                            </a>
-                            <div class="comment-main">
-                                <header class="comment-header">
-                                    <div class="comment-meta">
-                                        <a class="comment-author" href="user.html">xiaoli</a>
-                                        评论于
-                                        <time title="2016-12-07 09:12:51" datetime="2016-12-07 09:12:51">2017-03-01
-                                            09:12:51
-                                        </time>
-                                    </div>
-                                </header>
-                                <div class="comment-body">
-                                    <p>这电影真好看！</p>
+                                    <p th:utext="${comment.content}">这音乐真好听！</p>
                                 </div>
                             </div>
                         </li>
@@ -355,14 +238,14 @@
     </div>
 </footer>
 <!--底部-->
-<script src="../static/base/js/jquery.min.js"></script>
-<script src="../static/base/js/bootstrap.min.js"></script>
-<script src="../static/base/js/jquery.singlePageNav.min.js"></script>
-<script src="../static/base/js/wow.min.js"></script>
-<script src="../static/lazyload/jquery.lazyload.min.js"></script>
-<script src="../static/js/holder.min.js"></script>
+<script src="/static/base/js/jquery.min.js"></script>
+<script src="/static/base/js/bootstrap.min.js"></script>
+<script src="/static/base/js/jquery.singlePageNav.min.js"></script>
+<script src="/static/base/js/wow.min.js"></script>
+<script src="/static/lazyload/jquery.lazyload.min.js"></script>
+<script src="/static/js/holder.min.js"></script>
 <!--播放页面-->
-<script src="../static/jwplayer/jwplayer.js"></script>
+<script src="/static/jwplayer/jwplayer.js"></script>
 <script>
     var ue = UE.getEditor('input_content', {
         toolbars: [
@@ -375,18 +258,19 @@
 <script type="text/javascript">
     jwplayer.key = "P9VTqT/X6TSP4gi/hy1wy23BivBhjdzVjMeOaQ==";
 </script>
-<script type="text/javascript">
+<script th:inline="javascript">
+    var mv = "/static/users/music/mvs/" + [[${music.mvresaddr}]];
     jwplayer("moviecontainer").setup({
-        flashplayer: "../static/jwplayer/jwplayer.flash.swf",
+        flashplayer: "/static/jwplayer/jwplayer.flash.swf",
         playlist: [{
-            file: "../static/video/htpy.mp4",
-            title: "环太平洋"
+            file: mv,
+            title: [[${music.name}]]
         }],
         modes: [{
             type: "html5"
         }, {
             type: "flash",
-            src: "../static/jwplayer/jwplayer.flash.swf"
+            src: "/static/jwplayer/jwplayer.flash.swf"
         }, {
             type: "download"
         }],
@@ -409,6 +293,33 @@
     $(document).ready(function () {
         $("img.lazy").lazyload({
             effect: "fadeIn"
+        });
+        $("#do_search").click(function () {
+            var key = $("#key_music").val();
+            location.href = "/user/search?key=" + key;
+        });
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        $("#btn-col").click(function () {
+            var mid = [[${music.id}]];
+            var uid = [[${user_id}]];
+            $.ajax({
+                url: "/user/musiccol/add",
+                type: "GET",
+                data: "mid=" + mid + "&uid=" + uid,
+                dataType: "json",
+                success: function (res) {
+                    if (res.ok == 1) {
+                        $("#show_col_msg").empty();
+                        $("#show_col_msg").append("收藏成功！");
+                    } else {
+                        $("#show_col_msg").empty();
+                        $("#show_col_msg").append("已经收藏！");
+                    }
+                }
+            });
         });
     });
 </script>

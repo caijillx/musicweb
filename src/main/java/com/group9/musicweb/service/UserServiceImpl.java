@@ -78,9 +78,14 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<Comment> queryComment(int userid) {
-        String sql = "select * from comment where user_id = "+userid+" order by creat_time desc";
+        String sql = "select * from comment where user_id = " + userid + " order by creat_time desc";
         System.out.println(sql);
         return jdbcTemplate.query(sql, new BeanPropertyRowMapper<Comment>(Comment.class));
+    }
+
+    @Override
+    public User findUserById(int userid) {
+        return userRepository.findById(userid);
     }
 
 }

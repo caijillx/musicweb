@@ -9,7 +9,7 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 
 import java.util.List;
 
-public interface UserRepository extends JpaRepository<User,Integer> {
+public interface UserRepository extends JpaRepository<User, Integer> {
 
     User findByNameAndPwd(String name, String pwd);
 
@@ -19,4 +19,5 @@ public interface UserRepository extends JpaRepository<User,Integer> {
 
     User findByPhone(String phone);
 
+    User findById(int id);
 }
